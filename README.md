@@ -1,5 +1,8 @@
 [![](https://jitpack.io/v/lihangleo2/SmartLoadingView.svg)](https://jitpack.io/#lihangleo2/SmartLoadingView)
 
+[![](https://jitpack.io/v/justinelock/SmartLoadingView.svg)](https://jitpack.io/#justinelock/SmartLoadingView)
+
+
 ## SmartLoadingView一个自带dialog的联网请求按钮
 * 支持在任何布局上使用
 * 支持转场动画（可用于登录）
