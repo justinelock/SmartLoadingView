@@ -2,6 +2,9 @@
 
 [![](https://jitpack.io/v/justinelock/SmartLoadingView.svg)](https://jitpack.io/#justinelock/SmartLoadingView)
 
+## 新增
+* 自定义按钮文字
+* 按钮状态 颜色变化 按下 和 默认 颜色设置
 
 ## SmartLoadingView一个自带dialog的联网请求按钮
 * 支持在任何布局上使用
