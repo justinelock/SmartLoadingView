@@ -25,7 +25,8 @@
  - app build.gradle添加如下
     ```java
    dependencies {
-	        implementation 'com.github.lihangleo2:SmartLoadingView:2.0.1'
+	        //implementation 'com.github.lihangleo2:SmartLoadingView:2.0.1'
+		implementation 'com.github.justinelock:SmartLoadingView:2.0.3'
 	}
    ```
 
