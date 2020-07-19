@@ -603,6 +603,40 @@ public class SmartLoadingView extends TextView {
         currentString = message;
     }
     
+    // 默认按钮
+    private AnimatorSet animatorDefault = new AnimatorSet();
+    /**
+     * 按下和 默认颜色
+     * btnLoadingLogin.backgroundChange(R.color.White);
+     * <p>
+     * btnLoadingLogin.backgroundChange(R.color.Black);
+     */
+    public void backgroundChange(int rid) {
+        paint.setColor(getResources().getColor(rid));
+        ValueAnimator animator = ValueAnimator.ofInt(0, 0);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                postInvalidate();
+            }
+        });
+        animatorDefault.play(animator);
+        animatorDefault.start();
+    }
+    
+    public void fail() {
+        if (isLoading) {
+            currentString = errorString;
+            paint.setColor(error_color);
+            animatorNetfail.start();
+        }
+    }
+
+    public void fail(String message) {
+        errorString = message;
+        fail();
+    }
+    
     private void cancleScroll() {
         if (animator_text_scroll != null) {
             animator_text_scroll.cancel();
