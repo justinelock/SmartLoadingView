@@ -3,7 +3,6 @@ package com.lihang.smartloadview;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
@@ -23,24 +22,15 @@ import android.graphics.RectF;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.text.method.SingleLineTransformationMethod;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.AnticipateInterpolator;
-import android.view.animation.AnticipateOvershootInterpolator;
-import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
-import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
-import android.widget.GridLayout;
-import android.widget.TextView;
 
 
 /**
@@ -48,8 +38,7 @@ import android.widget.TextView;
  * By leo
  * 2019.5.23
  */
-
-public class SmartLoadingView extends TextView {
+public class SmartLoadingView extends android.support.v7.widget.AppCompatTextView {
 
     //view的宽度
     private int width;
@@ -172,7 +161,7 @@ public class SmartLoadingView extends TextView {
     private int speed;
 
     //这是全屏动画
-    private CirclBigView circlBigView;
+    private CircleBigView circleBigView;
 
 
     public SmartLoadingView(Context context) {
@@ -185,7 +174,7 @@ public class SmartLoadingView extends TextView {
 
     public SmartLoadingView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        circlBigView = new CirclBigView(getContext());
+        circleBigView = new CircleBigView(getContext());
         mRect = new Rect();
         init(attrs);
         initPaint();
@@ -257,10 +246,14 @@ public class SmartLoadingView extends TextView {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 current_left = (int) animation.getAnimatedValue();
-
+                boolean isZero = false;
+                if (default_all_distance == 0) {
+                    default_all_distance = height;
+                    isZero = true;
+                }
                 int nowAlpha = textAlpha / 2 - (current_left * textAlpha / default_all_distance) < 0 ? 0 : textAlpha / 2 - (current_left * textAlpha / default_all_distance);
                 textPaint.setColor(addAlpha(textColor, nowAlpha));
-                if (current_left == default_all_distance) {
+                if (current_left == default_all_distance || isZero) {
                     isDrawLoading = true;
                 }
                 invalidate();
@@ -515,7 +508,7 @@ public class SmartLoadingView extends TextView {
             }
 
         } else {
-            cancleScroll();
+            cancelScroll();
             textPaint.setTextAlign(Paint.Align.CENTER);
             drawTextStart = textRect.left;
             canvas.drawText(currentString, textRect.centerX(), baseline, textPaint);
@@ -588,7 +581,7 @@ public class SmartLoadingView extends TextView {
     public void start() {
         //没有在loading的情况下才能点击（没有在请求网络的情况下）
         if (!isLoading) {
-            cancleScroll();
+            cancelScroll();
             startDrawOk = false;
             currentString = normalString;
             this.setClickable(false);
@@ -602,9 +595,10 @@ public class SmartLoadingView extends TextView {
     public void resetText(String message) {
         currentString = message;
     }
-    
+
     // 默认按钮
     private AnimatorSet animatorDefault = new AnimatorSet();
+
     /**
      * 按下和 默认颜色
      * btnLoadingLogin.backgroundChange(R.color.White);
@@ -623,7 +617,7 @@ public class SmartLoadingView extends TextView {
         animatorDefault.play(animator);
         animatorDefault.start();
     }
-    
+
     public void fail() {
         if (isLoading) {
             currentString = errorString;
@@ -636,8 +630,8 @@ public class SmartLoadingView extends TextView {
         errorString = message;
         fail();
     }
-    
-    private void cancleScroll() {
+
+    private void cancelScroll() {
         if (animator_text_scroll != null) {
             animator_text_scroll.cancel();
             animator_text_scroll = null;
@@ -704,8 +698,8 @@ public class SmartLoadingView extends TextView {
         animator_draw_ok.cancel();
         animatorSet.cancel();
         animatorNetfail.cancel();
-        if (circlBigView != null) {
-            circlBigView.setCircleR(0);
+        if (circleBigView != null) {
+            circleBigView.setCircleR(0);
         }
     }
 
@@ -714,7 +708,7 @@ public class SmartLoadingView extends TextView {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if (circlBigView == null) {
+            if (circleBigView == null) {
                 return;
             }
             switch (msg.what) {
@@ -909,30 +903,30 @@ public class SmartLoadingView extends TextView {
     }
 
     private void toBigCircle(AnimationFullScreenListener animationFullScreenListener) {
-        circlBigView.setRadius(this.getMeasuredHeight() / 2);
-        circlBigView.setColorBg(normal_color);
+        circleBigView.setRadius(this.getMeasuredHeight() / 2);
+        circleBigView.setColorBg(normal_color);
         int[] location = new int[2];
         this.getLocationOnScreen(location);
-        circlBigView.setXY(location[0] + this.getMeasuredWidth() / 2, location[1]);
+        circleBigView.setXY(location[0] + this.getMeasuredWidth() / 2, location[1]);
         ViewGroup activityDecorView = (ViewGroup) ((Activity) getContext()).getWindow().getDecorView();
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        activityDecorView.removeView(circlBigView);
-        activityDecorView.addView(circlBigView, layoutParams);
-        circlBigView.startShowAni(animationFullScreenListener, this);
+        activityDecorView.removeView(circleBigView);
+        activityDecorView.addView(circleBigView, layoutParams);
+        circleBigView.startShowAni(animationFullScreenListener, this);
     }
 
 
     private void toBigCircle(Activity activity, Class clazz) {
-        circlBigView.setRadius(this.getMeasuredHeight() / 2);
-        circlBigView.setColorBg(normal_color);
+        circleBigView.setRadius(this.getMeasuredHeight() / 2);
+        circleBigView.setColorBg(normal_color);
         int[] location = new int[2];
         this.getLocationOnScreen(location);
-        circlBigView.setXY(location[0] + this.getMeasuredWidth() / 2, location[1]);
+        circleBigView.setXY(location[0] + this.getMeasuredWidth() / 2, location[1]);
         ViewGroup activityDecorView = (ViewGroup) ((Activity) getContext()).getWindow().getDecorView();
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        activityDecorView.removeView(circlBigView);
-        activityDecorView.addView(circlBigView, layoutParams);
-        circlBigView.startShowAni(activity, clazz);
+        activityDecorView.removeView(circleBigView);
+        activityDecorView.addView(circleBigView, layoutParams);
+        circleBigView.startShowAni(activity, clazz);
     }
 
     //绘制打勾动画的接口
@@ -948,6 +942,6 @@ public class SmartLoadingView extends TextView {
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        cancleScroll();
+        cancelScroll();
     }
 }

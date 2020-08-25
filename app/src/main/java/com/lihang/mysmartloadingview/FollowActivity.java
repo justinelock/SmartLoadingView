@@ -33,7 +33,7 @@ public class FollowActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_follow);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_follow);
         binding.setOnclickListener(this);
         mImmersionBar = ImmersionBar.with(this);
         mImmersionBar.init();
@@ -133,8 +133,6 @@ public class FollowActivity extends AppCompatActivity implements View.OnClickLis
                 break;
         }
     }
-
-
 
 
     @Override

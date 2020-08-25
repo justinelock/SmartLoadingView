@@ -85,7 +85,6 @@ public class UIUtil {
     }
 
 
-
     //获得独一无二的Psuedo ID
     public static String getDeviceId() {
         String serial = null;
@@ -175,7 +174,7 @@ public class UIUtil {
         int versionCode = 1;
         try {
             packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
-            versionCode = packageInfo.versionCode ;
+            versionCode = packageInfo.versionCode;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -207,21 +206,20 @@ public class UIUtil {
         try {
             hash = MessageDigest.getInstance("MD5").digest(content.getBytes("UTF-8"));
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("NoSuchAlgorithmException",e);
+            throw new RuntimeException("NoSuchAlgorithmException", e);
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException("UnsupportedEncodingException", e);
         }
 
         StringBuilder hex = new StringBuilder(hash.length * 2);
         for (byte b : hash) {
-            if ((b & 0xFF) < 0x10){
+            if ((b & 0xFF) < 0x10) {
                 hex.append("0");
             }
             hex.append(Integer.toHexString(b & 0xFF));
         }
         return hex.toString();
     }
-
 
 
     /**
@@ -236,8 +234,6 @@ public class UIUtil {
         Matcher m = p.matcher(mobiles);
         return m.matches();
     }
-
-
 
 
 }

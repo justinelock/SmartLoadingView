@@ -39,13 +39,12 @@
                     android:layout_height="25dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:onClick="@{onclickListener}"
                     android:text="普通关注"
                     app:background_error="#bbbbbb"
                     app:background_normal="#08f2c7"
-                    app:cornerRaius="30dp"
-                    app:errorMsg="已关注"
-                    android:onClick="@{onclickListener}"
-                    />
+                    app:cornerRaius="50dp"
+                    app:errorMsg="已关注" />
             </RelativeLayout>
 
 
@@ -65,15 +64,14 @@
 
                 <com.lihang.smartloadview.SmartLoadingView
                     android:id="@+id/smartLoadingView_ok"
-                    android:layout_width="100dp"
-                    android:layout_height="25dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:text="打勾关注"
-                    app:background_normal="#08f2c7"
-                    app:cornerRaius="30dp"
                     android:onClick="@{onclickListener}"
-                    />
+                    android:text="打勾"
+                    app:background_normal="#08f2c7"
+                    app:cornerRaius="50dp" />
             </RelativeLayout>
 
 
@@ -97,11 +95,10 @@
                     android:layout_height="25dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:onClick="@{onclickListener}"
                     android:text="打勾消失"
                     app:background_normal="#08f2c7"
-                    app:cornerRaius="30dp"
-                    android:onClick="@{onclickListener}"
-                    />
+                    app:cornerRaius="50dp" />
 
             </RelativeLayout>
 
@@ -125,12 +122,11 @@
                     android:layout_height="25dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:onClick="@{onclickListener}"
                     android:text="打勾提醒"
                     android:textColor="#fff"
                     app:background_normal="#FA2525"
-                    app:cornerRaius="30dp"
-                    android:onClick="@{onclickListener}"
-                    />
+                    app:cornerRaius="50dp" />
             </RelativeLayout>
 
 
@@ -153,12 +149,11 @@
                     android:layout_height="25dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:onClick="@{onclickListener}"
                     android:text="打勾提醒"
                     android:textColor="#fff"
                     app:background_normal="#FA2525"
-                    app:cornerRaius="30dp"
-                    android:onClick="@{onclickListener}"
-                    />
+                    app:cornerRaius="50dp" />
             </RelativeLayout>
 
 
@@ -181,12 +176,11 @@
                     android:layout_height="25dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:onClick="@{onclickListener}"
                     android:text="打勾提醒"
                     android:textColor="#fff"
                     app:background_normal="#FA2525"
-                    app:cornerRaius="30dp"
-                    android:onClick="@{onclickListener}"
-                    />
+                    app:cornerRaius="50dp" />
             </RelativeLayout>
 
             <TextView

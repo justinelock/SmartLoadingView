@@ -9,7 +9,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 
@@ -18,8 +17,7 @@ import android.view.View;
  * By leo
  * 2019.5.23
  */
-
-public class CirclBigView extends View {
+public class CircleBigView extends View {
 
     //圆圈扩散动画
     private ValueAnimator animator_big;
@@ -33,16 +31,15 @@ public class CirclBigView extends View {
     //最大能扩散到的半径
     private int maxRadius;
 
-
-    public CirclBigView(Context context) {
+    public CircleBigView(Context context) {
         this(context, null);
     }
 
-    public CirclBigView(Context context, @Nullable AttributeSet attrs) {
+    public CircleBigView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CirclBigView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CircleBigView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         showPaint = new Paint();
         showPaint.setAntiAlias(true);

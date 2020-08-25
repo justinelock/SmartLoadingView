@@ -1,4 +1,4 @@
-package com.lihang.mysmartloadingview.customview;
+package com.lihang.smartloadview;
 
 
 import android.content.Context;
@@ -19,8 +19,6 @@ import android.net.Uri;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
-
-import com.lihang.mysmartloadingview.R;
 
 public class CircleImageView extends android.support.v7.widget.AppCompatImageView {
 
