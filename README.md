@@ -1,5 +1,7 @@
+原：
 [![](https://jitpack.io/v/lihangleo2/SmartLoadingView.svg)](https://jitpack.io/#lihangleo2/SmartLoadingView)
 
+新：
 [![](https://jitpack.io/v/justinelock/SmartLoadingView.svg)](https://jitpack.io/#justinelock/SmartLoadingView)
 
 ## 新增
