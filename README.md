@@ -1,4 +1,3 @@
-[![](https://jitpack.io/v/lihangleo2/SmartLoadingView.svg)](https://jitpack.io/#lihangleo2/SmartLoadingView)
 
 [![](https://jitpack.io/v/justinelock/SmartLoadingView.svg)](https://jitpack.io/#justinelock/SmartLoadingView)
 
@@ -26,7 +25,7 @@
     ```java
    dependencies {
 	        //implementation 'com.github.lihangleo2:SmartLoadingView:2.0.1'
-		implementation 'com.github.justinelock:SmartLoadingView:2.0.4'
+		implementation 'com.github.justinelock:SmartLoadingView:2.0.4'5
 	}
    ```
 
@@ -35,6 +34,30 @@
 ## 使用（下方有属性说明）
 
 ```xml
+<com.lihang.smartloadview.SmartLoadingView
+                android:id="@+id/btnListen"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="58dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="onClick"
+                android:text="听"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:background_cannotClick="@color/black48"
+                app:background_error="@color/colorPrimary"
+                app:background_normal="@color/white"
+                app:cornerRaius="30dp"
+                app:errorMsg=""
+                app:smart_clickable="true" />
+
+
 <com.lihang.smartloadview.SmartLoadingView
         android:id="@+id/smartLoadingView"
         android:layout_width="wrap_content"
