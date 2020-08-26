@@ -26,7 +26,7 @@
     ```java
    dependencies {
 	        //implementation 'com.github.lihangleo2:SmartLoadingView:2.0.1'
-		implementation 'com.github.justinelock:SmartLoadingView:2.0.3'
+		implementation 'com.github.justinelock:SmartLoadingView:2.0.4'
 	}
    ```
 
@@ -251,47 +251,47 @@ smartLoadingView.setSmartClickable(false);
  # 自定义属性
  #### 按钮文案
  - android:text="自带dialog按钮"  使用了textView的text文字属性
-  
+
  #### 按钮文案颜色值
  - android:textColor="#fff" 使用了textView的textColor颜色值属性
-  
+
  #### 按钮文案字体大小
  - android:textSize="15dp" 使用了textView的字体大小
- 
+
  #### 正常情况下的背景颜色值
  - app:background_normal="#fff" 按钮正常的背景颜色值
 
  #### 联网失败文案
  - app:errorMsg="联网失败文案" 联网失败展示的文案，比如登录时，账号密码错误
- 
+
  #### 联网失败下的背景颜色值
  - app:background_error="#ED7676" 联网失败时展示的背景颜色值，一般为殷红色
 
  #### 不可点击状态下的背景颜色值
  - app:background_cannotClick="#bbbbbb" 不可点击状态下的背景颜色值
- 
+
  #### 圆角属性
  - app:cornerRaius="30dp" 背景的圆角属性
- 
+
  #### 文字滚动模式（文字超过一行时，文字自动滚动）
  - app:textScrollMode="marquee" 比如联网失败后，失败文案太长了。文字自动滚动，这里有2种方式。1、normal来回滚动。 2、marquee跑马灯效果
- 
+
  #### 文字滚动速度
  - app:speed="400" 文字的滚动速度。可以理解为一个文字滚动出屏幕外需要的时间
- 
+
  #### 按钮的点击状态
  - app:smart_clickable="true" 不设置时，默认可以点击，为true。代码里也能通过 smartLoadingView9.setSmartClickable(false) 进行设置
- 
+
  #### 这里稍微说下长宽
  长宽都是用系统的layout_width和layout_height，包括设置padding。如果不设置，是有默认间距的
- 
+
  <br>
- 
+
  ## 关于作者。
 Android工作多年了，一直向往大厂。在前进的道路上是孤独的。如果你在学习的路上也感觉孤独，请和我一起。让我们在学习道路上少些孤独
 * [关于我的经历](https://mp.weixin.qq.com/s?__biz=MzAwMDA3MzU2Mg==&mid=2247483667&idx=1&sn=1a575ea2c636980e5f4c579d3a73d8ab&chksm=9aefcb26ad98423041c61ad7cbad77f0534495d11fc0a302b9fdd3a3e6b84605cad61d192959&mpshare=1&scene=23&srcid=&sharer_sharetime=1572505105563&sharer_shareid=97effcbe7f9d69e6067a40da3e48344a#rd)
  * QQ群： 209010674 <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=5e29576e7d2ebf08fa37d8953a0fea3b5eafdff2c488c1f5c152223c228f1d11"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="android交流群" title="android交流群"></a>（点击图标，可以直接加入）
- 
+
 <br>
 
 ## LICENSE
@@ -310,7 +310,7 @@ furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-``` 
- 
+```
+
  
 

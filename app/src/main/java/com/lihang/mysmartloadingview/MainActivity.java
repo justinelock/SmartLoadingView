@@ -1,14 +1,12 @@
 package com.lihang.mysmartloadingview;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.gyf.barlibrary.ImmersionBar;
 import com.lihang.mysmartloadingview.databinding.ActivityMainBinding;
@@ -67,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 binding.smartLoadingView3.start();
                 Observable.timer(2000, TimeUnit.MILLISECONDS)
                         .observeOn(AndroidSchedulers.mainThread()).subscribe(along -> {
-                    binding.smartLoadingView3.netFaile();
+                    binding.smartLoadingView3.netFail();
                 });
                 break;
             case R.id.smartLoadingView_4_:
@@ -76,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     binding.smartLoadingView4.start();
                     Observable.timer(2000, TimeUnit.MILLISECONDS)
                             .observeOn(AndroidSchedulers.mainThread()).subscribe(along -> {
-                        binding.smartLoadingView4.netFaile("关注成功");
+                        binding.smartLoadingView4.netFail("关注成功");
                     });
                 } else {
                     //这里是模拟取消关注
@@ -142,18 +140,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
                 break;
 
+            case R.id.btnListen:
+                //binding.btnListen.start2();
+                binding.btnListen.loading();
+                Observable.timer(2000, TimeUnit.MILLISECONDS)
+                        .observeOn(AndroidSchedulers.mainThread()).subscribe(along -> {
+                    Toast.makeText(MainActivity.this, "听", Toast.LENGTH_SHORT).show();
+                    binding.btnListen.unloading();
+                });
+                break;
+
+            case R.id.btnListen2:
+                binding.btnListen.loading();
+                Observable.timer(2000, TimeUnit.MILLISECONDS)
+                        .observeOn(AndroidSchedulers.mainThread()).subscribe(along -> {
+                    Toast.makeText(MainActivity.this, "听2", Toast.LENGTH_SHORT).show();
+                    binding.btnListen.unloading();
+                });
+                break;
+
             case R.id.smartLoadingView_7_:
                 binding.smartLoadingView7.start();
                 Observable.timer(2000, TimeUnit.MILLISECONDS)
                         .observeOn(AndroidSchedulers.mainThread()).subscribe(along -> {
-                    binding.smartLoadingView7.netFaile();
+                    binding.smartLoadingView7.netFail();
                 });
                 break;
             case R.id.smartLoadingView_8_:
                 binding.smartLoadingView8.start();
                 Observable.timer(2000, TimeUnit.MILLISECONDS)
                         .observeOn(AndroidSchedulers.mainThread()).subscribe(along -> {
-                    binding.smartLoadingView8.netFaile();
+                    binding.smartLoadingView8.netFail();
                 });
                 break;
 

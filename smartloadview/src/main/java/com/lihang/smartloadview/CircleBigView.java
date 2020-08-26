@@ -7,9 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 
 /**
@@ -164,6 +165,40 @@ public class CircleBigView extends View {
 
                 }
             });
+        }
+    }
+
+    public void startShowAni2(final SmartLoadingView2.AnimationFullScreenListener animationFullScreenListener, final SmartLoadingView2 smartLoadingView) {
+
+        if (animationFullScreenListener != null) {
+            if (!animator_big.isRunning()) {
+                animator_big.start();
+            }
+            if (animationFullScreenListener != null) {
+                animator_big.addListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        animationFullScreenListener.animationFullScreenFinish();
+                        smartLoadingView.resetLater();
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
+
+                    }
+                });
+            }
+
         }
     }
 

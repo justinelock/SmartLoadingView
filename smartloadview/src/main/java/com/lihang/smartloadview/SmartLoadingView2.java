@@ -1,16 +1,12 @@
 package com.lihang.smartloadview;
 
-import android.animation.Animator;
 import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathEffect;
@@ -24,22 +20,14 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.AnticipateInterpolator;
 import android.view.animation.LinearInterpolator;
-import android.widget.FrameLayout;
 
 import androidx.appcompat.widget.AppCompatTextView;
 
-
 /**
  * 登录加载按钮
- * 2020.08.27
  */
-public class SmartLoadingView extends AppCompatTextView {
+public class SmartLoadingView2 extends AppCompatTextView {
 
     //view的宽度
     private int width;
@@ -106,7 +94,7 @@ public class SmartLoadingView extends AppCompatTextView {
     private boolean startDrawOk = false;
 
     //绘制对勾（√）的动画
-    private ValueAnimator animator_draw_ok;
+    //private ValueAnimator animator_draw_ok;
 
     //对路径处理实现绘制动画效果
     private PathEffect effect;
@@ -162,25 +150,24 @@ public class SmartLoadingView extends AppCompatTextView {
     private int speed;
 
     //这是全屏动画
-    private CircleBigView circleBigView;
+    //private CircleBigView circleBigView;
 
 
-    public SmartLoadingView(Context context) {
+    public SmartLoadingView2(Context context) {
         this(context, null);
     }
 
-    public SmartLoadingView(Context context, AttributeSet attrs) {
+    public SmartLoadingView2(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SmartLoadingView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SmartLoadingView2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        circleBigView = new CircleBigView(getContext());
+        //circleBigView = new CircleBigView(getContext());
         mRect = new Rect();
         init(attrs);
         initPaint();
     }
-
 
     private void init(AttributeSet attrs) {
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.SmartLoadingView);
@@ -225,10 +212,9 @@ public class SmartLoadingView extends AppCompatTextView {
      */
     private void initAnimation() {
         set_rect_to_circle_animation();
-        set_draw_ok_animation();
-        animatorSet
-                .play(animator_rect_to_square).with(animator_rect_to_angle);
-        animatorNetfail.play(animator_squareToRect).with(animator_angle_to_rect);
+        //animatorSet.play(animator_rect_to_square).with(animator_rect_to_angle);
+        animatorSet.play(animator_rect_to_square);
+        //animatorNetfail.play(animator_squareToRect).with(animator_angle_to_rect);
     }
 
 
@@ -247,7 +233,6 @@ public class SmartLoadingView extends AppCompatTextView {
             public void onAnimationUpdate(ValueAnimator animation) {
                 current_left = (int) animation.getAnimatedValue();
                 boolean isZero = false;
-                // default_all_distance == 0 说明 长宽一样，可能是正方形，可能是圆
                 if (default_all_distance == 0) {
                     default_all_distance = height;
                     isZero = true;
@@ -263,73 +248,51 @@ public class SmartLoadingView extends AppCompatTextView {
         });
 
 
-        animator_rect_to_angle = ValueAnimator.ofInt(obtainCircleAngle, height / 2);
-        animator_rect_to_angle.setDuration(duration);
-        animator_rect_to_angle.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                circleAngle = (int) animation.getAnimatedValue();
-                invalidate();
-            }
-        });
+//        animator_rect_to_angle = ValueAnimator.ofInt(obtainCircleAngle, height / 2);
+//        animator_rect_to_angle.setDuration(duration);
+//        animator_rect_to_angle.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//            @Override
+//            public void onAnimationUpdate(ValueAnimator animation) {
+//                circleAngle = (int) animation.getAnimatedValue();
+//                invalidate();
+//            }
+//        });
 
 
-        animator_squareToRect = ValueAnimator.ofInt(default_all_distance, 0);
-        animator_squareToRect.setDuration(duration);
-        animator_squareToRect.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                current_left = (int) animation.getAnimatedValue();
-                //当控件扩展到一半时再显示文字，不然当文案过长时，会先显示文字。超过控件
-                if (current_left <= default_all_distance / 2) {
-                    int nowAlpha = (default_all_distance / 2 - current_left) * textAlpha / (default_all_distance / 2);
-                    textPaint.setColor(addAlpha(textColor, nowAlpha));
-                }
-                //错误动画全部走完之后，才能被点击
-                if (current_left == 0) {
-                    isLoading = false;
-                    setClickable(true);
-                }
-                isDrawLoading = false;
-                startDrawOk = false;
-                postInvalidate();
-            }
-        });
+//        animator_squareToRect = ValueAnimator.ofInt(default_all_distance, 0);
+//        animator_squareToRect.setDuration(duration);
+//        animator_squareToRect.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//            @Override
+//            public void onAnimationUpdate(ValueAnimator animation) {
+//                current_left = (int) animation.getAnimatedValue();
+//                //当控件扩展到一半时再显示文字，不然当文案过长时，会先显示文字。超过控件
+//                if (current_left <= default_all_distance / 2) {
+//                    int nowAlpha = (default_all_distance / 2 - current_left) * textAlpha / (default_all_distance / 2);
+//                    textPaint.setColor(addAlpha(textColor, nowAlpha));
+//                }
+//                //错误动画全部走完之后，才能被点击
+//                if (current_left == 0) {
+//                    isLoading = false;
+//                    setClickable(true);
+//                }
+//                isDrawLoading = false;
+//                startDrawOk = false;
+//                postInvalidate();
+//            }
+//        });
 
 
-        animator_angle_to_rect = ValueAnimator.ofInt(height / 2, obtainCircleAngle);
-        animator_angle_to_rect.setDuration(duration);
-        animator_angle_to_rect.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                circleAngle = (int) animation.getAnimatedValue();
-                postInvalidate();
-            }
-        });
+//        animator_angle_to_rect = ValueAnimator.ofInt(height / 2, obtainCircleAngle);
+//        animator_angle_to_rect.setDuration(duration);
+//        animator_angle_to_rect.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//            @Override
+//            public void onAnimationUpdate(ValueAnimator animation) {
+//                circleAngle = (int) animation.getAnimatedValue();
+//                postInvalidate();
+//            }
+//        });
 
     }
-
-
-    /**
-     * 绘制对勾的动画
-     */
-    private void set_draw_ok_animation() {
-        animator_draw_ok = ValueAnimator.ofFloat(1, 0);
-        animator_draw_ok.setDuration(duration);
-        animator_draw_ok.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                startDrawOk = true;
-                isDrawLoading = false;
-                float value = (Float) animation.getAnimatedValue();
-                effect = new DashPathEffect(new float[]{pathMeasure.getLength(), pathMeasure.getLength()}, value * pathMeasure.getLength());
-                okPaint.setPathEffect(effect);
-                invalidate();
-
-            }
-        });
-    }
-
 
     private void initPaint() {//初始画笔
         //矩形画笔
@@ -375,12 +338,14 @@ public class SmartLoadingView extends AppCompatTextView {
         super.setClickable(clickable);
         smartClickable = clickable;
         if (clickable) {
-            if (paint != null)
+            if (paint != null) {
                 paint.setColor(normal_color);
+            }
             postInvalidate();
         } else {
-            if (paint != null)
+            if (paint != null) {
                 paint.setColor(cannotclick_color);
+            }
             postInvalidate();
         }
     }
@@ -596,7 +561,6 @@ public class SmartLoadingView extends AppCompatTextView {
         return isLoading == true;
     }
 
-    // 按钮始终可以点
     public void loading() {
         //没有在loading的情况下才能点击（没有在请求网络的情况下）
         if (!isLoading) {
@@ -608,11 +572,6 @@ public class SmartLoadingView extends AppCompatTextView {
             isLoading = true;
             animatorSet.start();
         }
-    }
-
-
-    public void unloading() {
-        stopAndReset();
     }
 
     public void stopAndReset() {
@@ -627,7 +586,7 @@ public class SmartLoadingView extends AppCompatTextView {
         isLoading = false;
         invalidate();
 
-        // 这里避免控件翻转效果, 正方形或圆
+        // 这里避免控件翻转效果
         default_all_distance = 0;
         initAnimation();
     }
@@ -738,12 +697,9 @@ public class SmartLoadingView extends AppCompatTextView {
         isLoading = false;
         invalidate();
 
-        animator_draw_ok.cancel();
         animatorSet.cancel();
         animatorNetfail.cancel();
-        if (circleBigView != null) {
-            circleBigView.setCircleR(0);
-        }
+
     }
 
 
@@ -751,21 +707,10 @@ public class SmartLoadingView extends AppCompatTextView {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if (circleBigView == null) {
-                return;
-            }
+//            if (circleBigView == null) {
+//                return;
+//            }
             switch (msg.what) {
-                case 11:
-                    AnimationFullScreenListener animationFullScreenListener = (AnimationFullScreenListener) msg.obj;
-                    toBigCircle(animationFullScreenListener);
-                    break;
-                case 12:
-                    Activity activity = (Activity) msg.obj;
-                    Class temp = clazz;
-                    toBigCircle(activity, temp);
-                    clazz = null;
-                    break;
-
                 case 13:
                     resetAll();
                     break;
@@ -781,201 +726,6 @@ public class SmartLoadingView extends AppCompatTextView {
         }
     };
 
-
-    //开启全屏动画，并且监听动画结束后，实现自己的逻辑
-    public void onSuccess(AnimationFullScreenListener animationFullScreenListener) {
-        //必须，点击了最开始的动画处于，加载状态，才能获得回调
-        if (isLoading) {
-            if (!animatorSet.isRunning()) {
-                toBigCircle(animationFullScreenListener);
-            } else {
-                //当点击按钮的时候请求网络，加入动画执行时间大于网络请求时间，
-                //那么咱们默认，执行完加载动画后，立即执行加载成功动画
-                Message message = new Message();
-                message.what = 11;
-                message.obj = animationFullScreenListener;
-                mHandler.sendMessageDelayed(message, 1000);
-            }
-        }
-    }
-
-    private Class clazz;
-
-    //开启全屏动画，不需要监听动画，只需要传入值，即可实现跳转
-    public void onSuccess(Activity activity, Class clazz) {
-        //必须，点击了最开始的动画处于，加载状态，才能获得回调
-        if (isLoading) {
-            this.clazz = clazz;
-            if (!animatorSet.isRunning()) {
-                toBigCircle(activity, clazz);
-            } else {
-                //当点击按钮的时候请求网络，加入动画执行时间大于网络请求时间，
-                //那么咱们默认，执行完加载动画后，立即执行加载成功动画
-                Message message = new Message();
-                message.what = 12;
-                message.obj = activity;
-                mHandler.sendMessageDelayed(message, 1000);
-            }
-        }
-    }
-
-    //开启打勾模式
-    public void onSuccess(final AnimationOKListener animationOKListener) {
-        onSuccess(animationOKListener, OKAnimationType.NORMAL);
-    }
-
-    //开启打勾模式，打勾后，是否隐藏
-    public void onSuccess(final AnimationOKListener animationOKListener, final OKAnimationType okAnimationType) {
-        //这个思路是对的，然后就是看clickindex是否一致
-        //必须，点击了最开始的动画处于，加载状态，才能获得回调
-        if (isLoading) {
-            if (okAnimationType != OKAnimationType.TRANSLATION_CENTER) {
-                animator_draw_ok.cancel();
-                animator_draw_ok.start();
-                animator_draw_ok.addListener(new Animator.AnimatorListener() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        animationOKListener.animationOKFinish();
-                        isLoading = false;
-                        setClickable(true);
-                        if (okAnimationType == OKAnimationType.HIDE) {
-                            //这里是隐藏的操作
-                            Animation animations = AnimationUtils.loadAnimation(getContext(), R.anim.alpha_hide);
-                            setAnimation(animations);
-                            animations.start();
-                            setVisibility(View.INVISIBLE);
-                        }
-                    }
-
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animator animation) {
-
-                    }
-                });
-            } else {
-                //如果是要移动到中间的模式的话
-                int[] location = new int[2];
-                SmartLoadingView.this.getLocationOnScreen(location);
-                FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(height, height);
-                layoutParams.leftMargin = location[0] + (width / 2 - height / 2);
-                layoutParams.topMargin = location[1];
-
-                final OkView okView = new OkView(getContext());
-                okView.setLayoutParams(layoutParams);
-                okView.setCircleColor(normal_color);
-                okView.setOkColor(textColor);
-                okView.setRadius(height / 2);
-
-                final ViewGroup activityDecorView = (ViewGroup) ((Activity) getContext()).getWindow().getDecorView();
-                activityDecorView.addView(okView);
-                okView.start(duration);
-                //初始真正的那个View
-                setVisibility(View.INVISIBLE);
-                reset();
-
-                //当前屏幕中心位置
-                int window_center_x = UIUtil.getWidth(getContext()) / 2;
-                int window_center_y = UIUtil.getHeight(getContext()) / 2;
-
-                //okView当前的中心点
-                int okView_center_x = location[0] + width / 2;
-                int okView_center_y = location[1] + height / 2;
-
-                ObjectAnimator translationY = ObjectAnimator.ofFloat(okView, "translationY", 0f, window_center_y - okView_center_y)
-                        .setDuration(duration);
-                ObjectAnimator translationX = ObjectAnimator.ofFloat(okView, "translationX", 0f, window_center_x - okView_center_x)
-                        .setDuration(duration);
-
-                ObjectAnimator toViewAnimatorX = ObjectAnimator.ofFloat(okView, "scaleX", 1f, 1.3f).setDuration(duration / 2);
-                toViewAnimatorX.setRepeatMode(ValueAnimator.REVERSE);
-                toViewAnimatorX.setRepeatCount(1);
-                toViewAnimatorX.setInterpolator(new AnticipateInterpolator());
-                ObjectAnimator toViewAnimatorY = ObjectAnimator.ofFloat(okView, "scaleY", 1f, 1.3f).setDuration(duration / 2);
-                toViewAnimatorY.setRepeatMode(ValueAnimator.REVERSE);
-                toViewAnimatorY.setRepeatCount(1);
-                toViewAnimatorY.setInterpolator(new AnticipateInterpolator());
-                AnimatorSet animatorScale = new AnimatorSet();
-                animatorScale.playTogether(toViewAnimatorX, toViewAnimatorY);
-
-                ObjectAnimator toViewAnimatorAlpha = ObjectAnimator.ofFloat(okView, "alpha", 1f, 0f).setDuration(duration);
-                //这里就用代码实现把
-                AnimatorSet animatorSet = new AnimatorSet();
-                animatorSet.play(translationY).with(translationX).before(animatorScale).before(toViewAnimatorAlpha);
-                animatorSet.start();
-                animatorSet.addListener(new Animator.AnimatorListener() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        animationOKListener.animationOKFinish();
-                        isLoading = false;
-                        setClickable(true);
-                        activityDecorView.removeView(okView);
-
-                    }
-
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animator animation) {
-
-                    }
-                });
-            }
-        }
-    }
-
-    public enum OKAnimationType {
-        NORMAL, HIDE, TRANSLATION_CENTER
-    }
-
-    private void toBigCircle(AnimationFullScreenListener animationFullScreenListener) {
-        circleBigView.setRadius(this.getMeasuredHeight() / 2);
-        circleBigView.setColorBg(normal_color);
-        int[] location = new int[2];
-        this.getLocationOnScreen(location);
-        circleBigView.setXY(location[0] + this.getMeasuredWidth() / 2, location[1]);
-        ViewGroup activityDecorView = (ViewGroup) ((Activity) getContext()).getWindow().getDecorView();
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        activityDecorView.removeView(circleBigView);
-        activityDecorView.addView(circleBigView, layoutParams);
-        circleBigView.startShowAni(animationFullScreenListener, this);
-    }
-
-
-    private void toBigCircle(Activity activity, Class clazz) {
-        circleBigView.setRadius(this.getMeasuredHeight() / 2);
-        circleBigView.setColorBg(normal_color);
-        int[] location = new int[2];
-        this.getLocationOnScreen(location);
-        circleBigView.setXY(location[0] + this.getMeasuredWidth() / 2, location[1]);
-        ViewGroup activityDecorView = (ViewGroup) ((Activity) getContext()).getWindow().getDecorView();
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        activityDecorView.removeView(circleBigView);
-        activityDecorView.addView(circleBigView, layoutParams);
-        circleBigView.startShowAni(activity, clazz);
-    }
-
-    //绘制打勾动画的接口
-    public interface AnimationOKListener {
-        void animationOKFinish();
-    }
 
     //绘制全屏动画
     public interface AnimationFullScreenListener {

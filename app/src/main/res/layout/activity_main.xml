@@ -86,6 +86,55 @@
                 app:background_normal="#FF9800"
                 app:cornerRaius="30dp" />
 
+
+            <com.lihang.smartloadview.SmartLoadingView
+                android:id="@+id/btnListen"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="58dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="onClick"
+                android:text="听"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:background_cannotClick="@color/black48"
+                app:background_error="@color/colorPrimary"
+                app:background_normal="@color/white"
+                app:cornerRaius="30dp"
+                app:errorMsg=""
+                app:smart_clickable="true" />
+
+
+            <com.lihang.smartloadview.LoadingCircleView
+                android:id="@+id/btnListen2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="58dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="onClick"
+                android:text="听"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:background_cannotClick="@color/black48"
+                app:background_error="@color/colorPrimary"
+                app:background_normal="@color/white"
+                app:cornerRaius="30dp"
+                app:errorMsg=""
+                app:smart_clickable="true" />
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

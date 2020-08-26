@@ -243,10 +243,7 @@
                 app:cornerRaius="30dp"
                 app:errorMsg="连接超时，请稍后再试"
                 app:smart_clickable="false"
-                app:textScrollMode="marquee"
-                />
-
-
+                app:textScrollMode="marquee" />
 
 
             <RelativeLayout

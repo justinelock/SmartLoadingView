@@ -1,13 +1,14 @@
 package com.lihang.mysmartloadingview;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.gyf.barlibrary.ImmersionBar;
 import com.lihang.mysmartloadingview.databinding.ActivityFollowBinding;
@@ -49,7 +50,7 @@ public class FollowActivity extends AppCompatActivity implements View.OnClickLis
                     binding.smartLoadingViewNormal.start();
                     Observable.timer(2000, TimeUnit.MILLISECONDS)
                             .observeOn(AndroidSchedulers.mainThread()).subscribe(along -> {
-                        binding.smartLoadingViewNormal.netFaile("关注成功");
+                        binding.smartLoadingViewNormal.netFail("关注成功");
                     });
                 } else {
                     //这里是模拟取消关注

@@ -1,8 +1,5 @@
 package com.lihang.mysmartloadingview;
 
-/**
- * Created by lihang on 2017/9/13.
- */
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,8 +8,6 @@ import android.widget.EditText;
 
 /**
  * 打开或关闭软键盘
- *
- * @author zhy
  */
 public class KeyBoardUtils {
     /**
