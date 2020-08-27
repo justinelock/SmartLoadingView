@@ -84,9 +84,7 @@
 
 |1.1、动画结束后自动跳转|1.2、自己监听动画实现逻辑|
 |:---:|:---:|
-|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/round_circle_btn.gif)
-
-|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/loading_1.gif)|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/loading_2.gif)
+|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/round_circle_btn.gif)|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/loading_1.gif)|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/loading_2.gif)
 
 <br>
 
