@@ -25,7 +25,7 @@
     ```java
    dependencies {
 	        //implementation 'com.github.lihangleo2:SmartLoadingView:2.0.1'
-		implementation 'com.github.justinelock:SmartLoadingView:2.0.4'5
+		implementation 'com.github.justinelock:SmartLoadingView:2.0.4'6
 	}
    ```
 
@@ -132,6 +132,8 @@ smartLoadingView.onSuccess(new SmartLoadingView.AnimationFullScreenListener() {
 ```
 
 <br>
+
+|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/round_circle_btn.gif)
 
 ## 二、联网请求失败的样式
 
