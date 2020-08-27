@@ -25,7 +25,7 @@
     ```java
    dependencies {
 	        //implementation 'com.github.lihangleo2:SmartLoadingView:2.0.1'
-		implementation 'com.github.justinelock:SmartLoadingView:2.0.6'
+		implementation 'com.github.justinelock:SmartLoadingView:2.0.7'
 	}
    ```
 
@@ -34,28 +34,29 @@
 ## 使用（下方有属性说明）
 
 ```xml
-<com.lihang.smartloadview.SmartLoadingView
-                android:id="@+id/btnListen"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="58dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center_vertical|center_horizontal"
-                android:onClick="onClick"
-                android:text="听"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                app:background_cannotClick="@color/black48"
-                app:background_error="@color/colorPrimary"
-                app:background_normal="@color/white"
-                app:cornerRaius="30dp"
-                app:errorMsg=""
-                app:smart_clickable="true" />
+<com.lihang.smartloadview.LoadingCircleView
+    android:id="@+id/btnListen2"
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginLeft="40dp"
+    android:layout_marginTop="58dp"
+    android:layout_marginRight="40dp"
+    android:layout_marginBottom="10dp"
+    android:gravity="center_vertical|center_horizontal"
+    android:onClick="onClick"
+    android:text="听2"
+    android:textAlignment="center"
+    android:textColor="@color/black"
+    android:textSize="15sp"
+    app:text_after_color="@color/white"
+    app:background_cannotClick="@color/black48"
+    app:background_error="@color/colorPrimary"
+    app:background_normal="@color/white"
+    app:cornerRaius="30dp"
+    app:errorMsg=""
+    app:smart_clickable="true" />
 
 
 <com.lihang.smartloadview.SmartLoadingView
@@ -72,8 +73,7 @@
         app:cornerRaius="30dp"
         app:textScrollMode="marquee"
         app:smart_clickable="true"
-        app:speed="400"
-        />
+        app:speed="400" />
 ```
 
 <br>
@@ -266,12 +266,7 @@ smartLoadingView.setSmartClickable(false);
 |![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/demo_login.gif)|![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/demo_follow.gif)
 
 可以下载demo自行查看
-
-
-## 扫描二维体验效果(下载密码是：123456)
-![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/SmartLoadingView_.png)
-
-<br>
+ 
 
  # 自定义属性
  #### 按钮文案
@@ -312,12 +307,7 @@ smartLoadingView.setSmartClickable(false);
 
  <br>
 
- ## 关于作者。
-Android工作多年了，一直向往大厂。在前进的道路上是孤独的。如果你在学习的路上也感觉孤独，请和我一起。让我们在学习道路上少些孤独
-* [关于我的经历](https://mp.weixin.qq.com/s?__biz=MzAwMDA3MzU2Mg==&mid=2247483667&idx=1&sn=1a575ea2c636980e5f4c579d3a73d8ab&chksm=9aefcb26ad98423041c61ad7cbad77f0534495d11fc0a302b9fdd3a3e6b84605cad61d192959&mpshare=1&scene=23&srcid=&sharer_sharetime=1572505105563&sharer_shareid=97effcbe7f9d69e6067a40da3e48344a#rd)
- * QQ群： 209010674 <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=5e29576e7d2ebf08fa37d8953a0fea3b5eafdff2c488c1f5c152223c228f1d11"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="android交流群" title="android交流群"></a>（点击图标，可以直接加入）
 
-<br>
 
 ## LICENSE
 
