@@ -133,13 +133,13 @@ smartLoadingView.onSuccess(new SmartLoadingView.AnimationFullScreenListener() {
 
 <br>
 
-|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/round_circle_btn.gif)
+|![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/round_circle_btn.gif)
 
 ## 二、联网请求失败的样式
 
 |2.1、请求失败，文案显示在控件上|2.2、请求失败，回到初始状态|
 |:---:|:---:|
-|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/error_1.gif)|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/error_2.gif)
+|![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/error_1.gif)|![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/error_2.gif)
 
 <br>
 
@@ -167,9 +167,9 @@ smartLoadingView.backToStart();
 
 |3.1、正常的联网，正常出结果|3.2、正常联网，打勾出结果|
 |:---:|:---:|
-|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/follow_1.gif)|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/follow_2.gif)
+|![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/follow_1.gif)|![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/follow_2.gif)
 |3.3、打勾出结果，打勾消失|3.4、打勾出结果，提醒用户|
-|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/follow_3.gif)|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/follow_4.gif)
+|![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/follow_3.gif)|![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/follow_4.gif)
 
 <br> 
 
@@ -229,7 +229,7 @@ smartLoadingView.onSuccess(new SmartLoadingView.AnimationOKListener() {
 
 |4.1、文字来回滚动|4.2、仿跑马灯滚动|
 |:---:|:---:|
-|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/scroll.gif)|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/scroll.gif)
+|![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/scroll.gif)|![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/scroll.gif)
 
 <br>
 
@@ -247,7 +247,7 @@ xml里只需要加上 app:textScrollMode="marquee"
 
 |5.1、设置不可点击状态||
 |:---:|:---:|
-|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/cannot_click.gif)|![]()
+|![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/cannot_click.gif)|![]()
 
 <br>
 
@@ -263,13 +263,13 @@ smartLoadingView.setSmartClickable(false);
 
 |6.1、登录demo|6.2、关注demo|
 |:---:|:---:|
-|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/demo_login.gif)|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/demo_follow.gif)
+|![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/demo_login.gif)|![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/demo_follow.gif)
 
 可以下载demo自行查看
 
 
 ## 扫描二维体验效果(下载密码是：123456)
-![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/SmartLoadingView_.png)
+![](https://github.com/justinelock/SmartLoadingView/blob/master/gif/SmartLoadingView_.png)
 
 <br>
 
