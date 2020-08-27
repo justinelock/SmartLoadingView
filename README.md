@@ -25,7 +25,7 @@
     ```java
    dependencies {
 	        //implementation 'com.github.lihangleo2:SmartLoadingView:2.0.1'
-		implementation 'com.github.justinelock:SmartLoadingView:2.0.4'6
+		implementation 'com.github.justinelock:SmartLoadingView:2.0.6'
 	}
    ```
 
