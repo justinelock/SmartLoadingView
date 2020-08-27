@@ -142,20 +142,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btnListen:
                 //binding.btnListen.start2();
-                binding.btnListen.loading();
+                //binding.btnListen.loading();
+                binding.btnListen.setNormalColor(getResources().getColor(R.color.red)).loading().resetText("");
                 Observable.timer(2000, TimeUnit.MILLISECONDS)
                         .observeOn(AndroidSchedulers.mainThread()).subscribe(along -> {
-                    Toast.makeText(MainActivity.this, "听", Toast.LENGTH_SHORT).show();
-                    binding.btnListen.unloading();
+                    Toast.makeText(MainActivity.this, "听1", Toast.LENGTH_SHORT).show();
+                    //binding.btnListen.unloading();
+                    binding.btnListen.setNormalColor(getResources().getColor(R.color.white)).unloading().resetText("听2");
                 });
                 break;
 
             case R.id.btnListen2:
-                binding.btnListen.loading();
+                //binding.btnListen2.setTextColor(getResources().getColor(R.color.white));
+                binding.btnListen2.setNormalColor(getResources().getColor(R.color.red)).loading().resetText("123");
+                //binding.btnListen2.loading();
+                //binding.btnListen2.resetText("12");
+                //binding.btnListen2.loading(R.color.red_dark,"11", R.color.colorPrimary);
                 Observable.timer(2000, TimeUnit.MILLISECONDS)
                         .observeOn(AndroidSchedulers.mainThread()).subscribe(along -> {
                     Toast.makeText(MainActivity.this, "听2", Toast.LENGTH_SHORT).show();
-                    binding.btnListen.unloading();
+                    binding.btnListen2.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    binding.btnListen2.setNormalColor(getResources().getColor(R.color.white)).unloading().resetText("听2");
+                    //binding.btnListen2.unloading();
+                    // binding.btnListen2.resetText("听3");
                 });
                 break;
 

@@ -117,6 +117,25 @@ public class LoadingCircleView extends AppCompatTextView {
     //是否可以点击状态
     private boolean smartClickable;
 
+    public LoadingCircleView setErrorColor(int error_color) {
+        this.error_color = error_color;
+        return this;
+    }
+
+    public LoadingCircleView setNormalColor(int normal_color) {
+        this.normal_color = normal_color;
+        return this;
+    }
+
+    public LoadingCircleView setNormalString(String normalString) {
+        this.normalString = normalString;
+        return this;
+    }
+
+    public LoadingCircleView setErrorString(String errorString) {
+        this.errorString = errorString;
+        return this;
+    }
 
     //按钮文字
     private String normalString = "";//getResources().getString(R.string.normalString);
@@ -127,6 +146,12 @@ public class LoadingCircleView extends AppCompatTextView {
     private Rect mRect;
     //当前字体颜色值
     private int textColor;
+
+    @Override
+    public void setTextColor(int textColor) {
+        this.textColor = textColor;
+    }
+
     //当前字体透明度
     private int textAlpha;
     //文字滚动速度
@@ -166,9 +191,9 @@ public class LoadingCircleView extends AppCompatTextView {
             errorString = currentErrorString;
         }
         cannotclick_color = typedArray.getColor(R.styleable.SmartLoadingView_background_cannotClick, getResources().getColor(R.color.blackbb));
-        error_color = typedArray.getColor(R.styleable.SmartLoadingView_background_error, getResources().getColor(R.color.remind_color));
+        error_color = typedArray.getColor(R.styleable.SmartLoadingView_background_error, getResources().getColor(R.color.red));
         smartClickable = typedArray.getBoolean(R.styleable.SmartLoadingView_smart_clickable, true);
-        normal_color = typedArray.getColor(R.styleable.SmartLoadingView_background_normal, getResources().getColor(R.color.guide_anim));
+        normal_color = typedArray.getColor(R.styleable.SmartLoadingView_background_normal, getResources().getColor(R.color.white));
         obtainCircleAngle = (int) typedArray.getDimension(R.styleable.SmartLoadingView_cornerRaius, getResources().getDimension(R.dimen.default_corner));
         textScrollMode = typedArray.getInt(R.styleable.SmartLoadingView_textScrollMode, 1);
         speed = typedArray.getInt(R.styleable.SmartLoadingView_speed, 400);
@@ -498,7 +523,22 @@ public class LoadingCircleView extends AppCompatTextView {
         return isLoading == true;
     }
 
-    public void loading() {
+    public void loading(int bgRid, String message, int tvRid) {
+        normalString = message;
+//        normal_color = bgRid;
+//        textPaint.setColor(tvRid);
+        loading();
+    }
+
+    /**
+     * 按钮始终可以点
+     * btnListen.setNormalColor(getResources().getColor(R.color.red_dark)).loading().resetText("1");
+     *
+     * btnListen.setTextColor(getResources().getColor(R.color.colorPrimary));
+     * btnListen.setNormalColor(getResources().getColor(R.color.white)).unloading().resetText("2");
+     *
+     */
+    public LoadingCircleView loading() {
         //没有在loading的情况下才能点击（没有在请求网络的情况下）
         if (!isLoading) {
             cancelScroll();
@@ -509,9 +549,15 @@ public class LoadingCircleView extends AppCompatTextView {
             isLoading = true;
             animatorSet.start();
         }
+        return this;
     }
 
-    public void stopAndReset() {
+    public LoadingCircleView unloading() {
+        stopAndReset();
+        return this;
+    }
+
+    public LoadingCircleView stopAndReset() {
         setClickable(true);
         currentString = normalString;
         textPaint.setColor(textColor);
@@ -526,11 +572,13 @@ public class LoadingCircleView extends AppCompatTextView {
         // 这里避免控件翻转效果
         default_all_distance = 0;
         initAnimation();
+        return this;
     }
 
     // 2020.07.19 add 改变当前文本,适合做角色变化时，显示不同的文字
-    public void resetText(String message) {
+    public LoadingCircleView resetText(String message) {
         currentString = message;
+        return this;
     }
 
     // 默认按钮

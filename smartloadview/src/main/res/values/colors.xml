@@ -8,5 +8,8 @@
     <color name="guide_anim">#3e80fc</color>
     <color name="remind_color">#f54949</color>
     <color name="text_color">#ffffff</color>
+    <color name="white">#ffffff</color>
+    <color name="red">#ff0000</color>
+    <color name="red_dark">#9b1c2c</color>
 
 </resources>
