@@ -7,6 +7,8 @@
         <attr name="errorMsg" format="string" />
         <!--        错误背景颜色-->
         <attr name="background_error" format="color" />
+        <!--        转圈的颜色， 默认是字体的颜色 -->
+        <attr name="text_after_color" format="color" />
         <!--        不可点击状态下，背景颜色值(不建议修改)-->
         <attr name="background_cannotClick" format="color" />
         <!--        圆角属性-->

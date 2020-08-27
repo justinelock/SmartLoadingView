@@ -2,6 +2,7 @@ package com.lihang.mysmartloadingview;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -153,7 +154,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.btnListen2:
-                //binding.btnListen2.setTextColor(getResources().getColor(R.color.white));
+                binding.btnListen2.setTextColor(getResources().getColor(R.color.white));
+                Log.e("black", "" + getResources().getColor(R.color.black));
+                Log.e("white", "" + getResources().getColor(R.color.white));
                 binding.btnListen2.setNormalColor(getResources().getColor(R.color.red)).loading().resetText("123");
                 //binding.btnListen2.loading();
                 //binding.btnListen2.resetText("12");

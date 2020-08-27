@@ -133,6 +133,8 @@ public class SmartLoadingView extends AppCompatTextView {
     /**
      * 以下是自定义属性
      */
+    // -1 白色
+    private int text_after_color;
 
     //不可点击的背景颜色
     private int cannotclick_color;
@@ -220,6 +222,7 @@ public class SmartLoadingView extends AppCompatTextView {
         if (!TextUtils.isEmpty(currentErrorString)) {
             errorString = currentErrorString;
         }
+        text_after_color = typedArray.getColor(R.styleable.SmartLoadingView_text_after_color, getResources().getColor(R.color.dark_gray));
         cannotclick_color = typedArray.getColor(R.styleable.SmartLoadingView_background_cannotClick, getResources().getColor(R.color.blackbb));
         error_color = typedArray.getColor(R.styleable.SmartLoadingView_background_error, getResources().getColor(R.color.remind_color));
         smartClickable = typedArray.getBoolean(R.styleable.SmartLoadingView_smart_clickable, true);
@@ -378,9 +381,10 @@ public class SmartLoadingView extends AppCompatTextView {
 
         ColorStateList textColors = getTextColors();
         final int[] drawableState = getDrawableState();
+        okPaint.setColor(text_after_color);
         //获取textView默认颜色值
         textColor = textColors.getColorForState(drawableState, 0);
-        okPaint.setColor(textColor);
+        //okPaint.setColor(textColor);
         textAlpha = Color.alpha(textColor);
 
 

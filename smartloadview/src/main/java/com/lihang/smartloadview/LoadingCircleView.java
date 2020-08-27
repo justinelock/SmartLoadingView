@@ -19,6 +19,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.animation.LinearInterpolator;
 
@@ -111,6 +112,9 @@ public class LoadingCircleView extends AppCompatTextView {
     //加载失败的背景颜色
     private int error_color;
 
+    // -1 白色
+    private int text_after_color;
+
     //正常情况下view的背景颜色
     private int normal_color;
 
@@ -192,6 +196,7 @@ public class LoadingCircleView extends AppCompatTextView {
         }
         cannotclick_color = typedArray.getColor(R.styleable.SmartLoadingView_background_cannotClick, getResources().getColor(R.color.blackbb));
         error_color = typedArray.getColor(R.styleable.SmartLoadingView_background_error, getResources().getColor(R.color.red));
+        text_after_color = typedArray.getColor(R.styleable.SmartLoadingView_text_after_color, getResources().getColor(R.color.dark_gray));
         smartClickable = typedArray.getBoolean(R.styleable.SmartLoadingView_smart_clickable, true);
         normal_color = typedArray.getColor(R.styleable.SmartLoadingView_background_normal, getResources().getColor(R.color.white));
         obtainCircleAngle = (int) typedArray.getDimension(R.styleable.SmartLoadingView_cornerRaius, getResources().getDimension(R.dimen.default_corner));
@@ -245,6 +250,7 @@ public class LoadingCircleView extends AppCompatTextView {
                     isZero = true;
                 }
                 int nowAlpha = textAlpha / 2 - (current_left * textAlpha / default_all_distance) < 0 ? 0 : textAlpha / 2 - (current_left * textAlpha / default_all_distance);
+                Log.e("textColor1", "" + textColor);
                 textPaint.setColor(addAlpha(textColor, nowAlpha));
                 if (current_left == default_all_distance || isZero) {
                     isDrawLoading = true;
@@ -279,9 +285,11 @@ public class LoadingCircleView extends AppCompatTextView {
 
         ColorStateList textColors = getTextColors();
         final int[] drawableState = getDrawableState();
+        Log.e("drawableState", "" + drawableState.length+","+ drawableState[0]+","+ drawableState[1]);
+        okPaint.setColor(text_after_color);
         //获取textView默认颜色值
         textColor = textColors.getColorForState(drawableState, 0);
-        okPaint.setColor(textColor);
+        //okPaint.setColor(textColor);
         textAlpha = Color.alpha(textColor);
 
 
@@ -540,6 +548,7 @@ public class LoadingCircleView extends AppCompatTextView {
      */
     public LoadingCircleView loading() {
         //没有在loading的情况下才能点击（没有在请求网络的情况下）
+        Log.e("textColor2", "" + textColor);
         if (!isLoading) {
             cancelScroll();
             startDrawOk = false;
