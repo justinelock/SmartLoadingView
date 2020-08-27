@@ -82,9 +82,9 @@
 
 ## 一、开启动画和转场动画的使用
 
-|1.1、动画结束后自动跳转|1.2、自己监听动画实现逻辑|
-|:---:|:---:|
-|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/loading_1.gif)|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/loading_2.gif)
+|1.0、圆形按钮|1.1、动画结束后自动跳转|1.2、自己监听动画实现逻辑|
+|:---:|:---:|:---:|
+|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/round_circle_btn.gif)|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/loading_1.gif)|![](https://github.com/lihangleo2/SmartLoadingView/blob/master/gif/loading_2.gif)
 
 <br>
 
